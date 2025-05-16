@@ -3,12 +3,11 @@ import { FaUser, FaClock, FaCloudDownloadAlt, FaComments } from "react-icons/fa"
 import Header from "../other/Header";
 import CreateTask from "../other/CreateTask";
 import AllTask from "../other/AllTask";
+import Widget from "../other/Widget";
+import Elements from "../other/Elements";
 
 const AdminDashboard = ({ changeUser }) => {
   const [activeComponent, setActiveComponent] = useState("dashboard");
-
- 
-  
 
   return (
     <div className="flex h-screen w-full bg-gray-100 overflow-hidden">
@@ -24,8 +23,8 @@ const AdminDashboard = ({ changeUser }) => {
           <button onClick={() => setActiveComponent("dashboard")} className="block text-lg font-medium flex items-center space-x-2 hover:text-emerald-400">🏠 Dashboard</button>
           <button onClick={() => setActiveComponent("createTask")} className="block text-lg font-medium flex items-center space-x-2 hover:text-emerald-400">✏️ Create New Task</button>
           <button onClick={() => setActiveComponent("allTasks")} className="block text-lg font-medium flex items-center space-x-2 hover:text-emerald-400">📋 All Tasks</button>
-          <button className="block text-lg font-medium flex items-center space-x-2 hover:text-emerald-400">📊 Widgets</button>
-          <button className="block text-lg font-medium flex items-center space-x-2 hover:text-emerald-400">🏗 Elements</button>
+          <button onClick={() => setActiveComponent("widgets")} className="block text-lg font-medium flex items-center space-x-2 hover:text-emerald-400">📊 Widgets</button>
+          <button onClick={() => setActiveComponent("elements")} className="block text-lg font-medium flex items-center space-x-2 hover:text-emerald-400">🏗 Elements</button>
         </nav>
       </aside>
 
@@ -45,8 +44,7 @@ const AdminDashboard = ({ changeUser }) => {
 
         {activeComponent === "createTask" && (
           <div className="bg-white shadow-lg rounded-xl p-6 mt-4">
-          <CreateTask />
-
+            <CreateTask />
           </div>
         )}
 
@@ -54,6 +52,18 @@ const AdminDashboard = ({ changeUser }) => {
           <div className="bg-white shadow-lg rounded-xl p-6 mt-4">
             <h2 className="text-xl font-semibold mb-4 text-blue-800">All Tasks</h2>
             <AllTask />
+          </div>
+        )}
+
+        {activeComponent === "widgets" && (
+          <div className="bg-white shadow-lg rounded-xl p-6 mt-4">
+            <Widget />
+          </div>
+        )}
+
+        {activeComponent === "elements" && (
+          <div className="bg-white shadow-lg rounded-xl p-6 mt-4">
+            <Elements />
           </div>
         )}
       </div>
